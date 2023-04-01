@@ -1,0 +1,70 @@
+<div class="row justify-content-center">
+  <div class="col-6">
+    <form (ngSubmit)="send()" #myForm="ngForm" autocomplete="off">
+      <div class="mb-3 row">
+        <label class="col-sm-3 col-form-label">Main Limit:</label>
+        <div class="col-sm-9">
+          <input
+            name="mainLimit"
+            placeholder="Main Limit"
+            [(ngModel)]="mainLimit"
+            required
+            (keypress)="validateFormat($event)"
+            currencyMask
+            [options]="{ prefix: '£ ', thousands: ',', precision: 0 }"
+          />
+          <span
+            *ngIf="validInput('mainLimit')"
+            class="m-5 form-text text-danger"
+          >
+            Grather than 0
+          </span>
+        </div>
+      </div>
+      <div class="mb-3 row">
+        <label class="col-sm-3 col-form-label">Main Retention:</label>
+        <div class="col-sm-9">
+          <input
+            name="mainRetention"
+            placeholder="Main Retention"
+            [(ngModel)]="mainRetention"
+            required
+            (keypress)="validateFormat($event)"
+            currencyMask
+            [options]="{ prefix: '£ ', thousands: ',', precision: 0 }"
+            required
+          />
+          <span
+            *ngIf="validInput('mainRetention')"
+            class="m-5 form-text text-danger"
+          >
+            Grather than 0
+          </span>
+        </div>
+      </div>
+      <div class="mb-3 row">
+        <label class="col-sm-3 col-form-label">Type of Execution:</label>
+        <div class="col-sm-9">
+          <select
+            class="form-select"
+            aria-label="Default select example"
+            required
+            [(ngModel)]="select"
+            name="select"
+          >
+            <option selected value="">Open this select menu</option>
+            <option value="Simple">Simple</option>
+            <option value="Complex">Complex</option>
+          </select>
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col">
+          <button type="submit" class="btn btn-primary float-end" [disabled]="myForm.invalid">
+            submit
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
