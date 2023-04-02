@@ -12,8 +12,6 @@ export class TableViewComponent implements OnInit {
   referenceDate: Date = new Date();
   benchmarkPercent1: number = 0.23;
   benchmarkPercent2: number = 0.47;
-  benchmarkNumber1: number = 0;
-  benchmarkNumber2: number = 0;
   isLoading = false;
 
   constructor(private taskService: TaskCalculationService) {}
