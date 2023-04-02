@@ -13,6 +13,8 @@ export class TableViewComponent implements OnInit {
   benchmarkPercent1: number = 0.23;
   benchmarkPercent2: number = 0.47;
   isLoading = false;
+  page = 1;
+  pageSize = 5;
 
   constructor(private taskService: TaskCalculationService) {}
 

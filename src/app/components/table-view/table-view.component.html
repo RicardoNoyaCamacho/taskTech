@@ -12,10 +12,21 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let item of updatedArray">
-      <th scope="row">{{ item?.referenceDate | date:' dd MMM yyyy'}}</th>
-      <td>{{ item?.benchmarkNumber1 | currency:'GBP'}}</td>
-      <td>{{ item?.benchmarkNumber2 | currency:'GBP' }}</td>
+    <tr
+      *ngFor="
+        let item of updatedArray
+          | slice : (page - 1) * pageSize : page * pageSize
+      "
+    >
+      <th scope="row">{{ item?.referenceDate | date : " dd MMM yyyy" }}</th>
+      <td>{{ item?.benchmarkNumber1 | currency : "GBP" }}</td>
+      <td>{{ item?.benchmarkNumber2 | currency : "GBP" }}</td>
     </tr>
   </tbody>
 </table>
+<ngb-pagination
+  *ngIf="updatedArray && !isLoading"
+  [(page)]="page"
+  [pageSize]="pageSize"
+  [collectionSize]="updatedArray.length"
+></ngb-pagination>

@@ -14,8 +14,6 @@ export class CalculatingViewComponent implements OnInit {
   public select = '';
   public inforArray!: InfoArray[];
 
-  // @Output() updatedArray: EventEmitter<InfoArray[]> = new EventEmitter<InfoArray[]>()
-
   @ViewChild('myForm') myForm!: NgForm;
 
   constructor(private taskService: TaskCalculationService) {}
@@ -51,11 +49,10 @@ export class CalculatingViewComponent implements OnInit {
 
   send() {
     this.inforArray?.push(this.myForm.value);
-    // console.log(this.inforArray);
 
-    // this.updatedArray.emit(this.inforArray)
+    this.taskService.setInfoArray(this.inforArray);
 
-    this.taskService.setInfoArray(this.inforArray)
+    this.myForm.resetForm();
 
   }
 }
