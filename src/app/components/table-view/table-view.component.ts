@@ -8,7 +8,7 @@ import { TaskCalculationService } from '../../services/task-calculation.service'
   styleUrls: ['./table-view.component.css'],
 })
 export class TableViewComponent implements OnInit {
-  updatedArray!: InfoArray[];
+  updatedArray: InfoArray[] = [];
   referenceDate: Date = new Date();
   benchmarkPercent1: number = 0.23;
   benchmarkPercent2: number = 0.47;
@@ -16,13 +16,18 @@ export class TableViewComponent implements OnInit {
   page = 1;
   pageSize = 5;
 
-  constructor(private taskService: TaskCalculationService) {}
+  @Input()
+  infoArrayUpdated: InfoArray[] = [];
+
+  constructor(private taskService: TaskCalculationService) {
+    this.referenceTable();
+  }
 
   ngOnInit(): void {
-    this.taskService.infoArrayemitter.subscribe((resp) => {
-      this.updatedArray = resp;
-      this.referenceTable();
-    });
+    // this.taskService.infoArrayemitter.subscribe((resp) => {
+    //   this.updatedArray = resp;
+    // this.referenceTable();
+    // });
   }
 
   load(): void {
@@ -31,7 +36,7 @@ export class TableViewComponent implements OnInit {
   }
 
   referenceTable() {
-    this.updatedArray?.forEach((e) => {
+    this.infoArrayUpdated?.forEach((e) => {
       this.load();
       e.referenceDate = this.referenceDate;
 
@@ -47,7 +52,7 @@ export class TableViewComponent implements OnInit {
   }
 
   calculating(number: number, percent: number) {
-    number = number * (1 + percent);
+    number *= (1 + percent);
     return number;
   }
 }

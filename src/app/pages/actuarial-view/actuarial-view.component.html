@@ -1,4 +1,4 @@
 <div class="container">
-  <app-calculating-view></app-calculating-view>
-  <app-table-view></app-table-view>
+  <app-calculating-view (infoArrayUpdated)="infoArrayUpdated = $event"></app-calculating-view>
+  <app-table-view [infoArrayUpdated]="infoArrayUpdated"></app-table-view>
 </div>

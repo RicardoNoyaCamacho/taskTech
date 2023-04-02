@@ -22,6 +22,9 @@ export class CalculatingViewComponent implements OnInit {
 
   @ViewChild('myForm') myForm!: NgForm;
 
+  @Output()
+  infoArrayUpdated: EventEmitter<InfoArray[]> = new EventEmitter<InfoArray[]>();
+
   constructor(private taskService: TaskCalculationService) {}
 
   ngOnInit(): void {
@@ -74,7 +77,8 @@ export class CalculatingViewComponent implements OnInit {
       this.inforArray?.pop();
     }
 
-    this.taskService.setInfoArray(this.inforArray);
+    // this.taskService.setInfoArray(this.inforArray);
+    this.infoArrayUpdated.emit(this.inforArray);
 
     this.myForm.reset(0);
   }

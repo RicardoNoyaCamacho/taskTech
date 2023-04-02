@@ -8,4 +8,6 @@ import { InfoArray } from 'src/app/interfaces/info.interface';
 })
 export class ActuarialViewComponent {
 
+  infoArrayUpdated!: InfoArray[];
+
 }
