@@ -1,4 +1,10 @@
-import { Component, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  OnInit,
+  Output,
+  ViewChild,
+} from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { InfoArray } from '../../interfaces/info.interface';
 import { TaskCalculationService } from '../../services/task-calculation.service';
@@ -48,11 +54,15 @@ export class CalculatingViewComponent implements OnInit {
   }
 
   send() {
-    this.inforArray?.push(this.myForm.value);
+    if (this.inforArray.length < 20) {
+      this.inforArray?.unshift(this.myForm.value);
+    } else {
+      this.inforArray?.unshift(this.myForm.value);
+      this.inforArray?.pop();
+    }
 
     this.taskService.setInfoArray(this.inforArray);
 
-    this.myForm.resetForm();
-
+    this.myForm.reset();
   }
 }
