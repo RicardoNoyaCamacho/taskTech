@@ -47,7 +47,7 @@ export class TableViewComponent implements OnInit {
   }
 
   calculating(number: number, percent: number) {
-    number = number * (1 + percent);
+    number *= (1 + percent);
     return number;
   }
 }
