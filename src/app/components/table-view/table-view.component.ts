@@ -25,26 +25,24 @@ export class TableViewComponent implements OnInit {
     });
   }
 
-  load() : void {
+  load(): void {
     this.isLoading = true;
-    setTimeout( () => this.isLoading = false, 2000 );
+    setTimeout(() => (this.isLoading = false), 2000);
   }
 
   referenceTable() {
     this.updatedArray?.forEach((e) => {
-      this.load()
+      this.load();
       e.referenceDate = this.referenceDate;
-      this.benchmarkNumber1 = this.calculating(
+
+      e.benchmarkNumber1 = this.calculating(
         e.mainLimit,
         this.benchmarkPercent1
       );
-      this.benchmarkNumber2 = this.calculating(
+      e.benchmarkNumber2 = this.calculating(
         e.mainLimit,
         this.benchmarkPercent2
       );
-
-      e.benchmarkNumber1 = this.benchmarkNumber1;
-      e.benchmarkNumber2 = this.benchmarkNumber2;
     });
   }
 
