@@ -5,7 +5,7 @@ import { InfoArray } from '../interfaces/info.interface';
   providedIn: 'root',
 })
 export class TaskCalculationService {
-  infoArray?: InfoArray[];
+  private infoArray: InfoArray[] = [];
 
   @Output()
   infoArrayemitter = new EventEmitter<InfoArray[]>();
