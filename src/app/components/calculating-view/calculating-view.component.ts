@@ -47,9 +47,22 @@ export class CalculatingViewComponent implements OnInit {
 
   validInput(inputName: string): boolean {
     return (
-      this.myForm?.form?.controls[inputName]?.value < 1 ||
-      (this.myForm?.form?.controls[inputName]?.invalid &&
-        this.myForm?.form?.controls[inputName]?.touched)
+      this.myForm?.form?.controls[inputName]?.invalid &&
+      this.myForm?.form?.controls[inputName]?.touched
+    );
+  }
+
+  validNumber(inputNumber: string): boolean {
+    return (
+      this.myForm?.form?.controls[inputNumber]?.value < 1 &&
+      this.myForm?.form?.controls[inputNumber]?.value != undefined
+    );
+  }
+
+  validButton(): boolean {
+    return (
+      this.myForm?.form?.controls['mainLimit']?.value < 1 ||
+      this.myForm?.form?.controls['mainRetention']?.value < 1
     );
   }
 
@@ -63,6 +76,6 @@ export class CalculatingViewComponent implements OnInit {
 
     this.taskService.setInfoArray(this.inforArray);
 
-    this.myForm.reset();
+    this.myForm.reset(0);
   }
 }

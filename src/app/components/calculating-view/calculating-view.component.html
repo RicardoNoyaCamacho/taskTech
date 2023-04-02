@@ -14,10 +14,16 @@
             [options]="{ prefix: '£ ', thousands: ',', precision: 0 }"
           />
           <span
-            *ngIf="validInput('mainLimit')"
+            *ngIf="validNumber('mainLimit')"
             class="m-5 form-text text-danger"
           >
             Grather than 0
+          </span>
+          <span
+            *ngIf="validInput('mainLimit')"
+            class="m-5 form-text text-danger"
+          >
+            Enter a Number
           </span>
         </div>
       </div>
@@ -35,10 +41,16 @@
             required
           />
           <span
-            *ngIf="validInput('mainRetention')"
+            *ngIf="validNumber('mainRetention')"
             class="m-5 form-text text-danger"
           >
             Grather than 0
+          </span>
+          <span
+            *ngIf="validInput('mainRetention')"
+            class="m-5 form-text text-danger"
+          >
+            Enter a Number
           </span>
         </div>
       </div>
@@ -60,7 +72,11 @@
       </div>
       <div class="row mb-3">
         <div class="col">
-          <button type="submit" class="btn btn-primary float-end" [disabled]="myForm.invalid">
+          <button
+            type="submit"
+            class="btn btn-primary float-end"
+            [disabled]="myForm.invalid || validButton()"
+          >
             submit
           </button>
         </div>
