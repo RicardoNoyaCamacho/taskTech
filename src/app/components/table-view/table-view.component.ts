@@ -25,7 +25,7 @@ export class TableViewComponent implements OnInit {
 
   load(): void {
     this.isLoading = true;
-    setTimeout(() => (this.isLoading = false), 2000);
+    setTimeout(() => (this.isLoading = false), 3000);
   }
 
   referenceTable() {
